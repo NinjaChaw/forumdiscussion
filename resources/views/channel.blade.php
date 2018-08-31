@@ -14,7 +14,9 @@
                 <p class="text-center">{{ str_limit($discussion->content, 120) }}</p>
             </div>
             <div class="panel-footer">
-                <p>{{ $discussion->replies->count() }} Replies</p>
+                <span>{{ $discussion->replies->count() }} Replies</span>
+
+                <a href="{{ route('channel', $discussion->channel->slug) }}" class="btn btn-default btn-xs pull-right">{{ $discussion->channel->title }}</a>
             </div>
         </div>
     @endforeach

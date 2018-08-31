@@ -15,6 +15,8 @@
 
     <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
     @yield('styles')
 
 </head>
@@ -76,6 +78,18 @@
             </div>
         </nav>
 
+        {{--<div>--}}
+            {{--@if($errors->count > 0)--}}
+                {{--<ul class="list-group">--}}
+                    {{--@foreach($errors->all() as $error)--}}
+                        {{--<li class="list-group-item">--}}
+                            {{--{{ $error }}--}}
+                        {{--</li>--}}
+                    {{--@endforeach--}}
+                {{--</ul>--}}
+            {{--@endif--}}
+        {{--</div>--}}
+
         <div class="container">
             <div class="col-md-4">
 
@@ -88,6 +102,9 @@
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <a href="{{ route('forum') }}" style="text-decoration: none">Home</a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="/forum?filter=me" style="text-decoration: none">My discussions</a>
                             </li>
                         </ul>
                     </div>
@@ -117,5 +134,13 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        @if(Session::has('success'))
+             toastr.success('{{ Session::get('success') }}')
+        @endif
+    </script>
+
 </body>
 </html>
